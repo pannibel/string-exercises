@@ -12,10 +12,6 @@ let optionsbox = document.querySelector("#options");
 
 //EVENT LISTENERS
 button.addEventListener("click", readInput);
-//button.addEventListener("click", checkInput);
-//button.addEventListener("click", readOption);
-//button.addEventListener("click", makeOutput);
-//button.addEventListener("click", printOutput);
 inputbox.addEventListener("click", clearInput);
 optionsbox.addEventListener("click", clearOutput);
 
@@ -41,9 +37,8 @@ function checkInput() {
     if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
         inputtype = "file"
     };
-    //how to check if it includes numbers and letters? or what makes it a password?
     if (input.includes()) {
-
+        //how to check if it includes numbers and letters? or what makes it a password?
     };
 
     console.log(inputtype);
@@ -97,7 +92,7 @@ function makeOutput() {
     };
     if (option === "8") {
         //Make a character uppercase, if it follows a space or a hyphen
-        
+
     };
 
     printOutput();
