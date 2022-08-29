@@ -6,12 +6,16 @@ let inputtype;
 let option;
 let output;
 let button = document.querySelector("button");
+let inputbox = document.querySelector("#input");
 
 //EVENT LISTENERS
 button.addEventListener("click", readInput);
+button.addEventListener("click", checkInput);
 button.addEventListener("click", readOption);
 button.addEventListener("click", printOutput);
 button.addEventListener("click", makeOutput);
+inputbox.addEventListener("click", clearInput);
+
 
 //FUNCTIONS
 function readInput() {
@@ -19,20 +23,19 @@ function readInput() {
     console.log(input)
 }
 
-function readOption() {
-    option = document.querySelector("#options").value;
-    console.log(option);
-}
-
 //checking if the input is a first name, a full name, a filename, a password or else
 function checkInput() {
-    if (!input.includes(" ")) {
+
+    let firstLetter = input[0];
+
+
+    if (!input.includes(" ") && firstLetter.toUpperCase() === input[0] && !input.endsWith(".jpg") && !input.endsWith(".png")) {
         inputtype = "firstname"
     };
-    if (input.includes(" ")) {
+    if (input.includes(" ") && firstLetter.toUpperCase() === input[0] && !input.endsWith(".jpg") && !input.endsWith(".png")) {
         inputtype = "fullname"
     };
-    if (input.endsWith(".jpg", ".png")) {
+    if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
         inputtype = "file"
     };
     //how to check if it includes numbers and letters
@@ -41,6 +44,11 @@ function checkInput() {
     };
 
     console.log(inputtype)
+}
+
+function readOption() {
+    option = document.querySelector("#options").value;
+    console.log(option);
 }
 
 function makeOutput() {
@@ -74,4 +82,11 @@ function makeOutput() {
 function printOutput() {
     console.log(output);
 
+}
+
+function clearInput() {
+    input = "";
+    inputtype = "";
+
+    console.log(input, inputtype);
 }
