@@ -8,6 +8,7 @@ let output;
 let button = document.querySelector("button");
 let inputbox = document.querySelector("#input");
 let outputbox = document.querySelector("#output");
+let optionsbox = document.querySelector("#options");
 
 //EVENT LISTENERS
 button.addEventListener("click", readInput);
@@ -16,6 +17,7 @@ button.addEventListener("click", readInput);
 //button.addEventListener("click", makeOutput);
 //button.addEventListener("click", printOutput);
 inputbox.addEventListener("click", clearInput);
+optionsbox.addEventListener("click", clearOutput);
 
 
 //FUNCTIONS
@@ -82,7 +84,9 @@ function makeOutput() {
     };
     if (option === "6" && inputtype === "password") {
         //Hide a password with the correct number of *s
-
+        let password = "";
+        password = password.padEnd(input.length, "*");
+        output = password;
     };
     if (option === "7") {
         //Make the third character uppercase
@@ -93,15 +97,13 @@ function makeOutput() {
     };
     if (option === "8") {
         //Make a character uppercase, if it follows a space or a hyphen
-
+        
     };
 
     printOutput();
 }
 
 function printOutput() {
-    console.log(output);
-
     outputbox.value = output;
 }
 
@@ -110,6 +112,9 @@ function clearInput() {
     inputtype = "";
     output = "";
     outputbox.value = "";
+}
 
-    console.log(input, inputtype);
+function clearOutput() {
+    output = "";
+    outputbox.value = "";
 }
