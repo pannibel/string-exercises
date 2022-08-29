@@ -7,6 +7,7 @@ let option;
 let output;
 let button = document.querySelector("button");
 let inputbox = document.querySelector("#input");
+let outputbox = document.querySelector("#output");
 
 //EVENT LISTENERS
 button.addEventListener("click", readInput);
@@ -101,11 +102,14 @@ function makeOutput() {
 function printOutput() {
     console.log(output);
 
+    outputbox.value = output;
 }
 
 function clearInput() {
     input = "";
     inputtype = "";
+    output = "";
+    outputbox.value = "";
 
     console.log(input, inputtype);
 }
