@@ -35,7 +35,7 @@ function checkInput() {
         inputtype = "fullname"
     };
     if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
-        inputtype = "file"
+        inputtype = "filename"
     };
     if (input.includes()) {
         //how to check if it includes numbers and letters? or what makes it a password?
@@ -72,10 +72,20 @@ function makeOutput() {
     };
     if (option === "4" && inputtype === "fullname") {
         //Find the middle name start and end position, and the middle name itself in a full name string
-
+        let middlename = input.substring(input.indexOf(" ") +1, input.lastIndexOf(" "));
+        output = middlename;
     };
     if (option === "5" && inputtype === "filename") {
         //Check if filename is .jpg or .png
+        let jpg = "File is jpg";
+        let png = "File is png";
+
+        if (input.endsWith(".jpg")) {
+            output = jpg;
+        };
+        if (input.endsWith(".png")) {
+            output = png;
+        }
     };
     if (option === "6" && inputtype === "password") {
         //Hide a password with the correct number of *s
@@ -92,7 +102,14 @@ function makeOutput() {
     };
     if (option === "8") {
         //Make a character uppercase, if it follows a space or a hyphen
-
+        let afterspace = input.substring(input.indexOf(" ")+1);
+        let afterhyphen = input.substring(input.indexOf("-")+1);
+        if (input.includes(" ")) {
+            output = input.replaceAll(afterspace[0], afterspace[0].toUpperCase());
+        };
+        if (input.includes("-")) {
+            output = input.replaceAll(afterhyphen[0], afterhyphen[0].toUpperCase());
+        }
     };
 
     printOutput();
