@@ -35,12 +35,12 @@ function checkInput() {
     if (input.includes(" ") && firstLetter.toUpperCase() === input[0] && !input.endsWith(".jpg") && !input.endsWith(".png")) {
         inputtype = "fullname"
     };
-    if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
-        inputtype = "filename"
-    };
-    if (!input.includes(" ") && numbers.some(number => input.includes(number))) {
+    if (!input.includes(" ") && numbers.some(number => input.includes(number)) && !input.endsWith(".jpg") || !input.includes(" ") && numbers.some(number => input.includes(number)) && !input.endsWith(".png")) {
         //how to check if it includes numbers and letters? or what makes it a password?
         inputtype = "password"
+    };
+    if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
+        inputtype = "filename"
     };
 
     console.log(inputtype);
