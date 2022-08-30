@@ -27,6 +27,7 @@ function readInput() {
 function checkInput() {
 
     let firstLetter = input[0];
+    let numbers = ["0","1","2","3","4","5","6","7","8","9"]
 
     if (!input.includes(" ") && !input.endsWith(".jpg") && !input.endsWith(".png")) {
         inputtype = "firstname"
@@ -37,8 +38,9 @@ function checkInput() {
     if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
         inputtype = "filename"
     };
-    if (input.includes()) {
+    if (numbers.some(number => input.includes(number))) {
         //how to check if it includes numbers and letters? or what makes it a password?
+        inputtype = "password"
     };
 
     console.log(inputtype);
@@ -77,7 +79,8 @@ function makeOutput() {
     };
     if (option === "5" && inputtype === "filename") {
         //Check if filename is .jpg or .png
-       output = input.slice(-4);
+        let filetype = input.slice(-4);
+        output = "File is " +filetype;
     };
     if (option === "6" && inputtype === "password") {
         //Hide a password with the correct number of *s
