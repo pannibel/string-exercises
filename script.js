@@ -30,17 +30,17 @@ function checkInput() {
     let firstLetter = input[0];
     let numbers = ["0","1","2","3","4","5","6","7","8","9"]
 
-    if (!input.includes(" ") && !input.endsWith(".jpg") && !input.endsWith(".png")) {
+    if (!input.includes(" ") && !input.includes(".")) {
         inputtype = "firstname"
     };
-    if (input.includes(" ") && firstLetter.toUpperCase() === input[0] && !input.endsWith(".jpg") && !input.endsWith(".png")) {
+    if (input.includes(" ") && firstLetter.toUpperCase() === input[0] && !input.includes(".")) {
         inputtype = "fullname"
     };
-    if (!input.includes(" ") && numbers.some(number => input.includes(number)) && !input.endsWith(".jpg") || !input.includes(" ") && numbers.some(number => input.includes(number)) && !input.endsWith(".png")) {
+    if (!input.includes(" ") && numbers.some(number => input.includes(number))) {
         //how to check if it includes numbers and letters? or what makes it a password?
         inputtype = "password"
     };
-    if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
+    if (!input.includes(" ") && input.includes(".")) {
         inputtype = "filename"
     };
 
@@ -57,38 +57,77 @@ function readOption() {
 
 function makeOutput() {
 
-    if (option === "1" && inputtype === "firstname") {
-        //Make the first character in a name uppercase, and the rest lowercase
-        let uppercase = input.substring(0, 1).toUpperCase();
-        let lowercase = input.substring(1).toLowerCase();
-        output = uppercase+lowercase;
+    if (option === "1") {
+    //Make the first character in a name uppercase, and the rest lowercase
+
+        if (inputtype === "firstname") {
+            let uppercase = input.substring(0, 1).toUpperCase();
+            let lowercase = input.substring(1).toLowerCase();
+            output = uppercase+lowercase
+        } else {
+            output = "Incorrect input"
+        }
     };
-    if (option === "2" && inputtype === "fullname") {
-        //Find the first name
-        let firstname = input.substring(input[0], input.indexOf(" "));
-        output = firstname;
+
+    if (option === "2")  {
+    //Find the first name    
+
+        if (inputtype === "fullname") {
+            let firstname = input.substring(input[0], input.indexOf(" "));
+            output = firstname;
+        } else {
+            output = "Incorrect input"
+        }
     };
-    if (option === "3" && inputtype === "fullname") {
-        //Find the length of the first name
-        let firstname = input.substring(input[0], input.indexOf(" "));
-        output = firstname.length;
+
+    if (option === "3") {
+    //Find the length of the first name
+
+        if (inputtype === "fullname") {
+            let firstname = input.substring(input[0], input.indexOf(" "));
+            output = firstname.length;
+        } else {
+            output = "Incorrect input"
+        }
     };
-    if (option === "4" && inputtype === "fullname") {
-        //Find the middle name start and end position, and the middle name itself in a full name string
-        let middlename = input.substring(input.indexOf(" ") +1, input.lastIndexOf(" "));
-        output = middlename;
+        
+    if (option === "4") {
+    //Find the middle name start and end position, and the middle name itself in a full name string
+
+        if (inputtype === "fullname") {
+            let middlename = input.substring(input.indexOf(" ") +1, input.lastIndexOf(" "));
+            output = middlename;
+        } else {
+            output = "Incorrect input"
+        }
     };
-    if (option === "5" && inputtype === "filename") {
-        //Check if filename is .jpg or .png
-        let filetype = input.slice(-4);
-        output = "File is " +filetype;
+
+    if (option === "5") {
+    //Check if filename is .jpg or .png
+
+        if (inputtype === "filename") {
+            let filetype = input.slice(-4);
+                if (filetype === ".jpg" || filetype === ".png") {
+                output = "File is " +filetype;
+                } else {
+                    output = "Incorrect filetype"}
+        } else {
+            output = "Incorrect input"
+        }
     };
-    if (option === "6" && inputtype === "password") {
-        //Hide a password with the correct number of *s
-        let password = "";
-        password = password.padEnd(input.length, "*");
-        output = password;
+
+    if (option === "6") {
+    //Hide a password with the correct number of *s
+
+        if (inputtype === "password") {
+            let password = "";
+            password = password.padEnd(input.length, "*");
+            output = password;
+        } else {
+            output = "Incorrect input"
+        }
     };
+
     if (option === "7") {
         //Make the third character uppercase
         let uppercase = input.substring(2, 3).toUpperCase();
@@ -96,11 +135,12 @@ function makeOutput() {
         let lowercase2 = input.substring(3).toLowerCase();
         output = lowercase1+uppercase+lowercase2;
     };
+    
     if (option === "8") {
         //Make a character uppercase, if it follows a space or a hyphen
         let previousChar;
         let currentChar;
-        
+
         output = input.substring(0, 1).toUpperCase();
         for (let i = 1; i < input.length; i++) {
             previousChar = input[i-1];
@@ -111,7 +151,7 @@ function makeOutput() {
             }
             output += currentChar;
         }
-    };
+    }
 
     printOutput();
 }
