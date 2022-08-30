@@ -10,6 +10,7 @@ let inputbox = document.querySelector("#input");
 let outputbox = document.querySelector("#output");
 let optionsbox = document.querySelector("#options");
 
+
 //EVENT LISTENERS
 button.addEventListener("click", readInput);
 inputbox.addEventListener("click", clearInput);
@@ -97,13 +98,19 @@ function makeOutput() {
     };
     if (option === "8") {
         //Make a character uppercase, if it follows a space or a hyphen
+        //For now it only finds the first space and hyphen
+        //Using something like foreach
         let afterspace = input.substring(input.indexOf(" ")+1);
         let afterhyphen = input.substring(input.indexOf("-")+1);
+
         if (input.includes(" ")) {
             output = input.replaceAll(afterspace[0], afterspace[0].toUpperCase());
         };
         if (input.includes("-")) {
             output = input.replaceAll(afterhyphen[0], afterhyphen[0].toUpperCase());
+        }
+        if (input.includes("-") && input.includes(" ")) {
+            output = afterall;
         }
     };
 
