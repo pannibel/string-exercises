@@ -38,7 +38,7 @@ function checkInput() {
     if (!input.includes(" ") && input.endsWith(".jpg") || !input.includes(" ") && input.endsWith(".png")) {
         inputtype = "filename"
     };
-    if (numbers.some(number => input.includes(number))) {
+    if (!input.includes(" ") && numbers.some(number => input.includes(number))) {
         //how to check if it includes numbers and letters? or what makes it a password?
         inputtype = "password"
     };
