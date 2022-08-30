@@ -77,15 +77,7 @@ function makeOutput() {
     };
     if (option === "5" && inputtype === "filename") {
         //Check if filename is .jpg or .png
-        let jpg = "File is jpg";
-        let png = "File is png";
-
-        if (input.endsWith(".jpg")) {
-            output = jpg;
-        };
-        if (input.endsWith(".png")) {
-            output = png;
-        }
+       output = input.slice(-4);
     };
     if (option === "6" && inputtype === "password") {
         //Hide a password with the correct number of *s
